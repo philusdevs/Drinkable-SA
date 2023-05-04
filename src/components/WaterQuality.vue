@@ -70,6 +70,8 @@
         const municipalData = this.waterQualityData.find(
           (item) => item.municipal === this.selectedMunicipal
         );
+        // Emit the event to the parent component
+        this.$emit('selectionMade');
 
         this.selectedMunicipalData = municipalData;
   
@@ -82,6 +84,8 @@
         this.operationalSafety = municipalData.operational === "No Data" ? 'No Data Available' :
           parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Not Good, Municipal is not meeting the compliance standard.';
       },
+
+      
   
 getSafetyColor(safetyCategory) {
   let safetyStatus = '';

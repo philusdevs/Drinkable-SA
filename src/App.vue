@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <WaterQuality />
+    <div class="content">
+      <WaterQuality @selectionMade="hideInfoText" />
+      <div v-if="!hideText">
+        <p>
+          <strong>Disinfectants</strong> are used to kill microorganisms in water to ensure it is safe for human consumption, and 97% compliance with national standards refers to the percentage of water samples that meet the required level of disinfection.
+        </p>
+        <p>
+          <strong>Non-health aesthetics</strong> refer to factors that affect the appearance, taste, and odor of water but do not pose a health risk, and 97% compliance with national standards refers to the percentage of water samples meeting aesthetic standards.
+        </p>
+        <p>
+          <strong>Operational</strong> refers to the day-to-day activities involved in managing and maintaining water treatment and distribution systems, and 97% compliance refers to the percentage of operational tasks meeting required standards.
+        </p>
+      </div>
+    </div>
     <footer>
-      <p>
-        The percentage shows the compliance with the national standards. A good indicator of compliance is 97 percentage and above.
+      <p >
+        Data is taken from www.niwis.gov.za.The copyright of the data/information remains with the Department of Water and Sanitation. </p>
+        <p>All data is supplied free of charge and may not be sold to third parties. The use of information data is restricted to use for academic, research, or personal purposes.
       </p>
-      <p>
-        Data is taken from www.niwis.gov.za. The copyright of the data/information remains with the Department of Water and Sanitation. This approval to use the data/information cannot be construed as a transfer of copyright.
-        All data is supplied free of charge and may not be sold to third parties. The use of information data is restricted to use for academic, research, or personal purposes.
-      </p>
-      
-      
     </footer>
   </div>
 </template>
@@ -34,12 +42,22 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 #app {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
 }
 
 h1, h2, h3 {
@@ -59,13 +77,21 @@ p {
 }
 
 footer {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  text-align: justify;
+  height:20;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.4rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
 }
 
 footer p {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
-
