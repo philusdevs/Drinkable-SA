@@ -2,6 +2,8 @@
 
 Drinkable SA is a web application that allows users to check the water quality of different municipals in South Africa. The application fetches water quality data, such as disinfectant, non-health aesthetic, and operational levels, and evaluates the safety of the water for consumption.
 
+[View Live Demo](https://drinkable-sa.netlify.app)
+
 ## Project setup
 To set up the project, follow these steps:
 
