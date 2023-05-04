@@ -24,7 +24,6 @@ cd drinkable-sa
 npm install axios
 npm install papaparse
 
-
 ## Running the application
 
 ### Compiles and hot-reloads for development
