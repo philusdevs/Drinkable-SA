@@ -1,7 +1,7 @@
 <template>
     <footer>
       <p>
-        Data is taken from www.niwis.gov.za.</p>
+        Data is taken from www.niwis.gov.za. Last updated 2023</p>
       <p>All data is supplied free of charge and may not be sold to third parties.
       </p>
     </footer>
