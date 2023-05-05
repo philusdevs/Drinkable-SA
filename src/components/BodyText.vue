@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bodyText">
         <p v-if="!hideText"> The national standard of compliance is 97 % for Disinfectant, Non-health aesthetics and Operations.</p>
 
 <p v-if="!hideText">
@@ -30,6 +30,8 @@
   </script>
   
   <style>
-  /* Your styles for the body text */
+  .bodyText{
+ text-align: center;
+  }
   </style>
   
