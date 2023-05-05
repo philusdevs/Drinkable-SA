@@ -1,8 +1,8 @@
 <template>
     <div>
-      <h1 text-align:center>Drinkable-SA: Water Quality Checker</h1>
+      <h1 text-align:center>Water Quality Checker</h1>
       <select v-model="selectedMunicipal" @change="calculateWaterSafety">
-        <option value="">Select a Municipal</option>
+        <option value="">Select a Municipal to Check Water Quality</option>
         <option v-for="municipal in municipals" :key="municipal">{{ municipal }}</option>
       </select>
   
@@ -116,3 +116,21 @@ mounted() {
   },
 };
 </script>
+
+<style>
+h1, h2, h3 {
+  margin-bottom: 1rem;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+</style>
