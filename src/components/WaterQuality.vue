@@ -7,7 +7,7 @@
       </select>
   
       <div v-if="selectedMunicipal">
-        <h2>Water Quality Information for {{ selectedMunicipal }}</h2>
+        <h2>Water Quality for {{ selectedMunicipal }}</h2>
         <div>
           <h3>Disinfectant</h3>
           <p :style="{ color: getSafetyColor('disinfectant') }">{{ disinfectantSafety }} ({{ selectedMunicipalData.disinfectant }})</p>
