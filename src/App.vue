@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <header>
+      <a href="index.html" class="logo-link">
+        <img src="drinkable-sa/public/logo.png" alt="Website Logo" class="logo">
+      </a>
+    </header>
     <div class="content">
       <WaterQuality @selectionMade="hideInfoText" />
       <div v-if="!hideText">
@@ -36,6 +41,24 @@ export default {
 
 <style>
 /* Global styles */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo-link {
+  display: inline-block;
+  padding: 10px;
+}
+
+.logo {
+  height: 50px; /* Adjust the height as needed */
+  width: auto;
+}
+
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
