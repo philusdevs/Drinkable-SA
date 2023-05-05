@@ -76,7 +76,7 @@
         this.selectedMunicipalData = municipalData;
   
         this.disinfectantSafety = municipalData.disinfectant === "No Data" ? '' :
-          parseFloat(municipalData.disinfectant) < 97 ? 'Please boil water before frinking current compliance is at' : 'Drinkable';
+          parseFloat(municipalData.disinfectant) < 97 ? 'Please boil water before drinking current compliance is at' : 'Drinkable';
   
         this.nonHealthAestheticSafety = municipalData.non_health_aesthetic === "No Data" ? 'No Data Available' :
           parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk, current compliance is at' : 'Drinkable';
