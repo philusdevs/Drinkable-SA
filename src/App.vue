@@ -21,8 +21,8 @@
     </div>
     <footer>
       <p >
-        Data is taken from www.niwis.gov.za.The copyright of the data/information remains with the Department of Water and Sanitation. </p>
-        <p>All data is supplied free of charge and may not be sold to third parties. The use of information data is restricted to use for academic, research, or personal purposes.
+        Data is taken from www.niwis.gov.za.</p>
+        <p>All data is supplied free of charge and may not be sold to third parties.
       </p>
     </footer>
   </div>
@@ -117,4 +117,6 @@ footer p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
 </style>

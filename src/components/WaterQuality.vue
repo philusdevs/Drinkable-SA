@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>Drinkable-SA: Water Quality Checker</h1>
+      <h1 text-align:center>Drinkable-SA: Water Quality Checker</h1>
       <select v-model="selectedMunicipal" @change="calculateWaterSafety">
         <option value="">Select a Municipal</option>
         <option v-for="municipal in municipals" :key="municipal">{{ municipal }}</option>
