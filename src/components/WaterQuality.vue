@@ -82,7 +82,7 @@
           parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk.' : 'Drinkable';
   
         this.operationalSafety = municipalData.operational === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the compliance standard.';
+          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the compliance standard of 97%';
       },
 
       
