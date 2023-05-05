@@ -76,13 +76,13 @@
         this.selectedMunicipalData = municipalData;
   
         this.disinfectantSafety = municipalData.disinfectant === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.disinfectant) < 97 ? 'Not Safe, Please Boil Water Before Drinking' : 'Drinkable';
+          parseFloat(municipalData.disinfectant) < 97 ? 'Please Boil Water Before Drinking' : 'Drinkable';
   
         this.nonHealthAestheticSafety = municipalData.non_health_aesthetic === "No Data" ? 'No Data Available' :
           parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor of water, but does not pose a health risk. For example, water with a musty or earthy odor may be unpalatable, but it may not necessarily be harmful to drink.' : 'Drinkable';
   
         this.operationalSafety = municipalData.operational === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Not Good, Municipal is not meeting the compliance standard.';
+          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the compliance standard.';
       },
 
       

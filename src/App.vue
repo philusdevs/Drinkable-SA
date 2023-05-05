@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <a href="index.html" class="logo-link">
-        <img src="drinkable-sa/public/logo.png" alt="Website Logo" class="logo">
+      <img :src= "require('@/assets/logo.png')" alt="Website Logo" class="logo">
       </a>
     </header>
     <div class="content">
@@ -55,7 +55,7 @@ header {
 }
 
 .logo {
-  height: 50px; /* Adjust the height as needed */
+  height: 125px; 
   width: auto;
 }
 
