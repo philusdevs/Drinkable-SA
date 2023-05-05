@@ -1,15 +1,16 @@
 <template>
     <div>
-      <p v-if="!hideText">
-        <strong>Disinfectants</strong> are used to kill microorganisms in water to ensure it is safe for human consumption, and 97% compliance with national standards refers to the percentage of water samples that meet the required level of disinfection.
-      </p>
-      <p v-if="!hideText">
-        <strong>Non-health aesthetics</strong> refer to factors that affect the appearance, taste, and odor of water but do not pose a health risk, and 97% compliance with national standards refers to the percentage of water samples meeting aesthetic standards.
-      </p>
-      <p v-if="!hideText">
-        <strong>Operational</strong> refers to the day-to-day activities involved in managing and maintaining water treatment and distribution systems, and 97% compliance refers to the percentage of operational tasks meeting required standards.
-      </p>
-    </div>
+        <p v-if="!hideText"> The national standard of compliance is 97 % for Disinfectant, Non-health aesthetics and Operations.</p>
+
+<p v-if="!hideText">
+       <strong>Disinfectants</strong> refers to chemicals used to kill microorganisms in water to ensure it is safe for human consumption.
+     </p>
+     <p v-if="!hideText">
+       <strong>Non-health aesthetics</strong> refer to factors that affect the appearance, taste, and odor of water but do not pose a health risk.
+     </p>
+     <p v-if="!hideText">
+       <strong>Operations</strong> refers to the day-to-day activities involved at the Municipal.</p>
+   </div>
   </template>
   
   <script>

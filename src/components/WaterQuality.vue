@@ -10,15 +10,15 @@
         <h2>Water Quality for {{ selectedMunicipal }}</h2>
         <div>
           <h3>Disinfectant</h3>
-          <p :style="{ color: getSafetyColor('disinfectant') }">{{ disinfectantSafety }} ({{ selectedMunicipalData.disinfectant }})</p>
+          <p :style="{ color: getSafetyColor('disinfectant') }">{{ disinfectantSafety }} {{ selectedMunicipalData.disinfectant }}</p>
         </div>
         <div>
           <h3>Non-Health Aesthetic</h3>
-          <p :style="{ color: getSafetyColor('nonHealthAesthetic') }">{{ nonHealthAestheticSafety }} ({{ selectedMunicipalData.non_health_aesthetic }})</p>
+          <p :style="{ color: getSafetyColor('nonHealthAesthetic') }">{{ nonHealthAestheticSafety }} {{ selectedMunicipalData.non_health_aesthetic }}</p>
         </div>
         <div>
-          <h3>Operational</h3>
-          <p :style="{ color: getSafetyColor('operational') }">{{ operationalSafety }} ({{ selectedMunicipalData.operational }})</p>
+          <h3>Operations</h3>
+          <p :style="{ color: getSafetyColor('operational') }">{{ operationalSafety }} {{ selectedMunicipalData.operational }}</p>
         </div>
       </div>
     </div>
@@ -75,14 +75,14 @@
 
         this.selectedMunicipalData = municipalData;
   
-        this.disinfectantSafety = municipalData.disinfectant === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.disinfectant) < 97 ? 'Please Boil Water Before Drinking' : 'Drinkable';
+        this.disinfectantSafety = municipalData.disinfectant === "No Data" ? '' :
+          parseFloat(municipalData.disinfectant) < 97 ? 'Please boil water before frinking current compliance is at' : 'Drinkable';
   
         this.nonHealthAestheticSafety = municipalData.non_health_aesthetic === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk.' : 'Drinkable';
+          parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk, current compliance is at' : 'Drinkable';
   
         this.operationalSafety = municipalData.operational === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the compliance standard of 97%';
+          parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the operations compliance standard of 97% current Municipal compliance is at';
       },
 
       
@@ -102,7 +102,7 @@ getSafetyColor(safetyCategory) {
       break;
   }
 
-  if (safetyStatus === 'No Data Available') {
+  if (safetyStatus === '') {
     return 'gray';
   }
 
