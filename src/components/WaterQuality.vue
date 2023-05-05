@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1 text-align:center>Water Quality Checker</h1>
+      <h1>Water Quality Checker</h1>
       <select v-model="selectedMunicipal" @change="calculateWaterSafety">
         <option value="">Select a Municipal to Check Water Quality</option>
         <option v-for="municipal in municipals" :key="municipal">{{ municipal }}</option>
@@ -79,7 +79,7 @@
           parseFloat(municipalData.disinfectant) < 97 ? 'Please Boil Water Before Drinking' : 'Drinkable';
   
         this.nonHealthAestheticSafety = municipalData.non_health_aesthetic === "No Data" ? 'No Data Available' :
-          parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor of water, but does not pose a health risk. For example, water with a musty or earthy odor may be unpalatable, but it may not necessarily be harmful to drink.' : 'Drinkable';
+          parseFloat(municipalData.non_health_aesthetic) < 97 ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk.' : 'Drinkable';
   
         this.operationalSafety = municipalData.operational === "No Data" ? 'No Data Available' :
           parseFloat(municipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the compliance standard.';
@@ -119,7 +119,11 @@ mounted() {
 
 <style>
 h1, h2, h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+ 
+}
+h1{
+    text-align: center;
 }
 
 select {
