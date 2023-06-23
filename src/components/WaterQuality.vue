@@ -2,7 +2,7 @@
   <div>
     <h1>Water Quality Checker</h1>
     <select v-model="selectedMunicipal" @change="calculateWaterSafety">
-      <option value="">Select a Municipal to Check Water Quality</option>
+      <option value="">Select a Municipality to Check Water Quality</option>
       <option v-for="municipal in municipals" :key="municipal">{{ municipal }}</option>
     </select>
 
@@ -26,56 +26,72 @@
 
 <script>
 import axios from 'axios';
+import Papa from 'papaparse';
 
 export default {
   name: 'WaterQuality',
 
   data() {
     return {
-      municipals: [],                 // Array to store the list of municipalities
-      selectedMunicipal: '',          // Currently selected municipal
-      waterQualityData: [],           // Array to store water quality data
-      disinfectantSafety: '',         // Safety status for disinfectant
-      nonHealthAestheticSafety: '',   // Safety status for non-health aesthetic
-      operationalSafety: '',          // Safety status for operational
-      selectedMunicipalData: {},      // Data of the selected municipal
+      municipals: [],
+      selectedMunicipal: '',
+      waterQualityData: [],
+      disinfectantSafety: '',
+      nonHealthAestheticSafety: '',
+      operationalSafety: '',
+      selectedMunicipalData: {},
     };
   },
 
   methods: {
     async fetchData() {
-      try {
-        // Fetch the list of municipalities and water quality data from the API
-        const response = await axios.get('https://drinkablesa-api-b93993490e91.herokuapp.com/');
-        this.waterQualityData = response.data.municipalities;
-        this.municipals = this.waterQualityData.map((item) => item.name);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      const response = await axios.get('https://raw.githubusercontent.com/philusdevs/Drinkable-SA/main/Drinkable.csv');
+      const csvData = response.data;
+
+      Papa.parse(csvData, {
+        header: true,
+        complete: (results) => {
+          this.waterQualityData = results.data.map((item) => {
+            return {
+              municipal: item.Municipal,
+              disinfectant: item.Disinfectant,
+              non_health_aesthetic: item['Non Health Aesthetic'],
+              operational: item.Operational,
+            };
+          });
+          this.municipals = Array.from(new Set(this.waterQualityData.map((item) => item.municipal)));
+        },
+      });
     },
 
-    async calculateWaterSafety() {
-      try {
-        // Fetch the specific data for the selected municipal from the API
-        const response = await axios.get(`https://drinkablesa-api-b93993490e91.herokuapp.com/municipalities/${this.selectedMunicipal}`);
-        this.selectedMunicipalData = response.data;
+    calculateWaterSafety() {
+      const municipalData = this.waterQualityData.find((item) => item.municipal === this.selectedMunicipal);
+      this.$emit('selectionMade');
+      this.selectedMunicipalData = municipalData;
 
-        // Calculate safety status based on the fetched data
-        this.disinfectantSafety = this.selectedMunicipalData.disinfectant === "No Data" ? '' :
-          parseFloat(this.selectedMunicipalData.disinfectant) < 97 ? 'Please boil water before drinking. Current compliance is at' : 'Drinkable';
+      this.disinfectantSafety =
+        municipalData.disinfectant === 'No Data'
+          ? ''
+          : parseFloat(municipalData.disinfectant) < 97
+          ? 'Please boil water before drinking current compliance is at'
+          : 'Drinkable';
 
-        this.nonHealthAestheticSafety = this.selectedMunicipalData.non_health_aesthetic === "No Data" ? 'No Data Available' :
-          parseFloat(this.selectedMunicipalData.non_health_aesthetic) < 97 ? 'Water may be affected in appearance, taste, and odor, but does not pose a health risk. Current compliance is at' : 'Drinkable';
+      this.nonHealthAestheticSafety =
+        municipalData.non_health_aesthetic === 'No Data'
+          ? 'No Data Available'
+          : parseFloat(municipalData.non_health_aesthetic) < 97
+          ? 'Water maybe affected in appearance, taste, and odor, but does not pose a health risk, current compliance is at'
+          : 'Drinkable';
 
-        this.operationalSafety = this.selectedMunicipalData.operational === "No Data" ? 'No Data Available' :
-          parseFloat(this.selectedMunicipalData.operational) >= 97 ? 'Good' : 'Municipal is not meeting the operations compliance standard of 97%. Current municipal compliance is at';
-      } catch (error) {
-        console.error('Error fetching municipal data:', error);
-      }
+      this.operationalSafety =
+        municipalData.operational === 'No Data'
+          ? 'No Data Available'
+          : parseFloat(municipalData.operational) >= 97
+          ? 'Good'
+          : 'Municipal is not meeting the operations compliance standard of 97% current Municipal compliance is at';
     },
 
     getSafetyColor(safetyCategory) {
-      // Get the safety status based on the safety category
       let safetyStatus = '';
 
       switch (safetyCategory) {
@@ -108,7 +124,6 @@ export default {
 h1, h2, h3 {
   margin-bottom: 2rem;
 }
-
 h1 {
   text-align: center;
 }
