@@ -46,7 +46,7 @@ export default {
     async fetchData() {
       try {
         // Fetch the list of municipalities and water quality data from the API
-        const response = await axios.get('https://drinkablesa-api-b93993490e91.herokuapp.com/municipalities');
+        const response = await axios.get('https://drinkablesa-api-b93993490e91.herokuapp.com/');
         this.waterQualityData = response.data.municipalities;
         this.municipals = this.waterQualityData.map((item) => item.name);
       } catch (error) {
